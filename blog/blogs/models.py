@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 
 
+class TALLY(models.Model):
+    t_content = models.CharField(max_length=255)
+
+
 class KIND(models.Model):
     k_content = models.CharField(max_length=255)
 
@@ -14,6 +18,7 @@ class ARTICLE(models.Model):
     author = models.CharField(max_length=255)
     content = models.TextField()
     a_k = models.ForeignKey(KIND, on_delete=models.CASCADE)
+    a_t = models.ManyToManyField(TALLY)
 
 
 class COMMENT(models.Model):
@@ -21,9 +26,3 @@ class COMMENT(models.Model):
     c_content = models.TextField()
     c_datetime = models.DateField(auto_now_add=True)
     c_a = models.ForeignKey(ARTICLE, on_delete=models.CASCADE)
-
-
-class TALLY(models.Model):
-    t_content = models.CharField(max_length=255)
-    t_a = models.ManyToManyField(ARTICLE)
-
