@@ -8,7 +8,7 @@ class KINDAdmain(admin.ModelAdmin):
 
 
 class ARTICLEAdmain(admin.ModelAdmin):
-    list_display = ['title']
+    list_display = ['title', 'date']
 
 
 class COMMENTAdmain(admin.ModelAdmin):
